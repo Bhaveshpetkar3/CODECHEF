@@ -1,3 +1,4 @@
+//https://codeforces.com/contest/144/problem/A
 #include<bits/stdc++.h>
 using namespace std;
 int main()
@@ -6,42 +7,38 @@ int main()
     cin>>t;
     while(t--)
     {
-        int n,c1=0,c2=0;
-        vector <char> g1;
+        int n;
         cin>>n;
-        string s;
-        cin>>s;
+        vector <int> g1;
+        vector <int> g2;
         for(int i=0;i<n;i++)
-        {//cout<<s[i];
-            int y=s[i];
-            if(s[i]=='+')c1++;
-            else if(s[i]=='-')c2++;
-            else {g1.push_back(y);};
+        {
+            int h;
+            cin>>h;
+            g1.push_back(h);
+            g2.push_back(h);
         }
-        int sizee=g1.size();
-        
         sort(g1.begin(),g1.end(),greater<char>());
-        int b=sizee-(c1+c2);
-        
-        for(int i=0;i<b;i++)
+        int max=g1.begin();
+        int min=g1.end();
+        int size=g2.size();
+        int maxloc,minloc,flag1=0,flag2=0;
+        for(int i=0;i<size;i++)
         {
-            cout<<g1.at(i);
-        }
-        for(int i=b;i<sizee;i++)
-        {
-            if(c1)
+            if(flag1==0)
             {
-                cout<<'+';
-                c1--;
+            if(g2[i]==max)maxloc=g2[i];
+            flag1=1;
             }
-            else if(c2)
+            if(flag2==0)
             {
-                cout<<'-';
-                c2--;
+            if(g2[i]==mmin)minloc=g2[i];
+            flag2=1;
             }
-            cout<<g1.at(i);
         }
-        cout<<"\n";
+        int no_of_swaps=maxloc+(n-minloc-1);
+        if(maxloc<minloc)cout<<no_of_swaps<<"\n";
+        else cout<<no_of_swaps-1<<"\n";
 
     }
     return 0;
