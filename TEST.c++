@@ -1,38 +1,34 @@
-#include<bits/stdc++.h>
+#include <iostream>
 using namespace std;
-int time(vector <int> &arr){
-    pair <int, int> max = {0,0};
-    pair <int, int> min= {101, 0};
-    for(int i=0; i<arr.size();i++){
-        if(max.first<arr[i]){
-            max={arr[i], i};
-        }
-    }
-    for(int i=arr.size()-1;i>=0;i--){
-        if(min.first<arr[i]){
-            min={arr[i],i};
-        }
-    }
-    int ans= max.second+((arr.size()-1)-min.second);
-    if(max.second>min.second){
-        return ans-1;
-    }
-    else{
-        return ans;
-    }
 
-}
-int main(){
-    int n;
-    cin>>n;
-    vector <int> arr;
-    for(int i=0; i<n; i++){
-        int x;
-        cin>>x;
-        arr.push_back(x);
-    }
-    int ans=time(arr);
-    cout<<ans<<endl;
- return 0;
-
+ #define unum unsigned long long int 
+ #define num long long int
+ 
+ void solve(){
+     int n,x;
+     cin>>n>>x;
+     if(x-n<0) cout<<"-1"<<endl;
+     else if(x-n==0){
+         for(int i=1;i<=n;i++){
+             cout<<i<<" ";
+         }
+         cout<<endl;
+     }
+     else{
+         cout<<x-n+1<<" ";
+         for(int i=1;i<=x-n;i++){
+             cout<<i<<" ";
+         }
+         for(int i=x-n+2;i<=n;i++){
+             cout<<i<<" ";
+         }
+         cout<<endl;
+     }
+ }
+ 
+int main() {
+	int t;
+	cin>>t;
+	while(t--) solve();
+	return 0;
 }
