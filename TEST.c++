@@ -1,34 +1,37 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-
- #define unum unsigned long long int 
- #define num long long int
- 
- void solve(){
-     int n,x;
-     cin>>n>>x;
-     if(x-n<0) cout<<"-1"<<endl;
-     else if(x-n==0){
-         for(int i=1;i<=n;i++){
-             cout<<i<<" ";
-         }
-         cout<<endl;
-     }
-     else{
-         cout<<x-n+1<<" ";
-         for(int i=1;i<=x-n;i++){
-             cout<<i<<" ";
-         }
-         for(int i=x-n+2;i<=n;i++){
-             cout<<i<<" ";
-         }
-         cout<<endl;
-     }
- }
- 
+void solve(long long int n, long long int x){
+    vector <long long int> intprm(n);
+    for(int i=1; i<=n;i++){
+        	intprm[i] = i;
+    }
+    if(x<n || x>(n+(n-1))){
+        cout<<"-1";
+    }
+    //else if(n==1 && x==1){
+        //cout<<"1";
+    //}
+    else{
+    for(int i=1; i<=n;i++){
+       
+       if(x==(n+i)){
+          swap(intprm[1],intprm[i+1]);
+          
+      }
+    }
+    for(int i=1; i<=n;i++){
+        cout<<intprm[i]<<" ";
+    }
+  }
+}
 int main() {
 	int t;
 	cin>>t;
-	while(t--) solve();
+	while(t--){
+	    long long int n, x;
+	    cin>>n>>x;
+	    solve(n, x);
+	    cout<<endl;
+	}
 	return 0;
 }
